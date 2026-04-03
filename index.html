@@ -257,6 +257,75 @@
       background-color: var(--ius-brown);
       color: #fff;
     }
+
+    /* ── Dropdown ───────────────────────────────────────────── */
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 8px 32px rgba(10,32,60,.18);
+      border-radius: 12px;
+      padding: .5rem;
+      min-width: 220px;
+    }
+    .dropdown-item {
+      border-radius: 7px;
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--ius-navy);
+      padding: .55rem 1rem;
+      transition: background-color .15s, color .15s;
+    }
+    .dropdown-item:hover, .dropdown-item:focus {
+      background-color: rgba(148,81,58,.1);
+      color: var(--ius-brown);
+    }
+    .nav-item.dropdown .nav-link::after {
+      margin-left: .4rem;
+    }
+
+    /* ── Courses section ────────────────────────────────────── */
+    .courses-section { background-color: var(--ius-light); }
+    .course-card {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      height: 100%;
+    }
+    .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(10,32,60,.13);
+    }
+    .course-thumb {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .course-badge {
+      display: inline-block;
+      background-color: rgba(148,81,58,.12);
+      color: var(--ius-brown);
+      border-radius: 50px;
+      padding: .2rem .8rem;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .course-price {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--ius-navy);
+      font-family: 'Lato', sans-serif;
+    }
+    .course-price span {
+      font-size: .9rem;
+      font-weight: 500;
+      color: #888;
+      text-decoration: line-through;
+      margin-left: .4rem;
+    }
   </style>
 </head>
 <body>
@@ -280,12 +349,51 @@
 
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Immigration</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Business</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+
+          <!-- Home -->
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+
+          <!-- Key Legal Topics dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+              Key Legal Topics
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="immigration.html">
+                <i class="bi bi-person-badge me-2" style="color:var(--ius-brown);"></i>Immigration
+              </a></li>
+              <li><a class="dropdown-item" href="corporate.html">
+                <i class="bi bi-building me-2" style="color:var(--ius-brown);"></i>Corporate
+              </a></li>
+              <li><a class="dropdown-item" href="domestic-relations.html">
+                <i class="bi bi-house-heart me-2" style="color:var(--ius-brown);"></i>Domestic Relations
+              </a></li>
+              <li><a class="dropdown-item" href="taxes.html">
+                <i class="bi bi-receipt-cutoff me-2" style="color:var(--ius-brown);"></i>Taxes
+              </a></li>
+              <li><a class="dropdown-item" href="labor.html">
+                <i class="bi bi-briefcase me-2" style="color:var(--ius-brown);"></i>Labor
+              </a></li>
+              <li><a class="dropdown-item" href="housing.html">
+                <i class="bi bi-house-door me-2" style="color:var(--ius-brown);"></i>Housing
+              </a></li>
+              <li><a class="dropdown-item" href="banking-government.html">
+                <i class="bi bi-bank me-2" style="color:var(--ius-brown);"></i>Banking &amp; Government
+              </a></li>
+              <li><a class="dropdown-item" href="consumer-protection.html">
+                <i class="bi bi-shield-check me-2" style="color:var(--ius-brown);"></i>Consumer Protection
+              </a></li>
+            </ul>
+          </li>
+
+          <!-- Resources -->
+          <li class="nav-item">
+            <a class="nav-link" href="resources.html">Resources</a>
+          </li>
+
           <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
             <a href="#" class="btn btn-primary px-4">Get Started</a>
           </li>
@@ -496,6 +604,129 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       COURSES / PRODUCTS
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="courses-section py-5" id="courses">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="section-label">Learn with Us</span>
+        <h2 class="section-title">Legal Education Courses</h2>
+        <p class="text-muted mt-2" style="max-width:540px; margin:auto;">
+          Self-paced online courses taught by bilingual attorneys. Master the legal fundamentals
+          you need to live and thrive in Mexico.
+        </p>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Course 1 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="card course-card shadow-sm">
+            <div class="course-thumb" style="background:linear-gradient(135deg,#0a203c,#003140);">
+              <i class="bi bi-person-badge" style="color:#e8a890;"></i>
+            </div>
+            <div class="card-body p-4">
+              <span class="course-badge">Immigration</span>
+              <h6 class="mt-2 mb-1">Mexico Immigration Masterclass</h6>
+              <p class="text-muted small mb-3">Visas, residency, citizenship—everything you need from temporary visitor to permanent resident.</p>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-clock text-muted small"></i>
+                <span class="text-muted small">6 hours</span>
+                <i class="bi bi-camera-video text-muted small ms-2"></i>
+                <span class="text-muted small">18 lessons</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="course-price">$99 <span>$149</span></div>
+                <a href="resources.html" class="btn btn-primary btn-sm px-3">Enroll</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="card course-card shadow-sm">
+            <div class="course-thumb" style="background:linear-gradient(135deg,#94513a,#774638);">
+              <i class="bi bi-building" style="color:#fff;"></i>
+            </div>
+            <div class="card-body p-4">
+              <span class="course-badge">Corporate</span>
+              <h6 class="mt-2 mb-1">Starting a Business in Mexico</h6>
+              <p class="text-muted small mb-3">Step-by-step guide to company formation, SAT registration, and operating legally from day one.</p>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-clock text-muted small"></i>
+                <span class="text-muted small">8 hours</span>
+                <i class="bi bi-camera-video text-muted small ms-2"></i>
+                <span class="text-muted small">24 lessons</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="course-price">$129 <span>$199</span></div>
+                <a href="resources.html" class="btn btn-primary btn-sm px-3">Enroll</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="card course-card shadow-sm">
+            <div class="course-thumb" style="background:linear-gradient(135deg,#1a5276,#0a203c);">
+              <i class="bi bi-receipt-cutoff" style="color:#e8a890;"></i>
+            </div>
+            <div class="card-body p-4">
+              <span class="course-badge">Taxes</span>
+              <h6 class="mt-2 mb-1">Tax Compliance for Expats</h6>
+              <p class="text-muted small mb-3">Understand RFC, SAT obligations, annual declarations, and cross-border tax planning strategies.</p>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-clock text-muted small"></i>
+                <span class="text-muted small">5 hours</span>
+                <i class="bi bi-camera-video text-muted small ms-2"></i>
+                <span class="text-muted small">15 lessons</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="course-price">$89 <span>$129</span></div>
+                <a href="resources.html" class="btn btn-primary btn-sm px-3">Enroll</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course 4 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="card course-card shadow-sm">
+            <div class="course-thumb" style="background:linear-gradient(135deg,#003140,#005a6e);">
+              <i class="bi bi-house-door" style="color:#e8a890;"></i>
+            </div>
+            <div class="card-body p-4">
+              <span class="course-badge">Housing</span>
+              <h6 class="mt-2 mb-1">Mexican Real Estate Essentials</h6>
+              <p class="text-muted small mb-3">Leases, property purchase process, fideicomiso, and tenant rights explained clearly for foreigners.</p>
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="bi bi-clock text-muted small"></i>
+                <span class="text-muted small">4 hours</span>
+                <i class="bi bi-camera-video text-muted small ms-2"></i>
+                <span class="text-muted small">12 lessons</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="course-price">$79 <span>$119</span></div>
+                <a href="resources.html" class="btn btn-primary btn-sm px-3">Enroll</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="resources.html" class="btn btn-outline-secondary px-5">
+          View All Courses <i class="bi bi-arrow-right ms-1"></i>
+        </a>
       </div>
     </div>
   </section>
