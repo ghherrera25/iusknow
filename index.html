@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iusknow — Mexican Legal Expertise for a Global Life</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Corporate color tokens ─────────────────────────────── */
+    :root {
+      --ius-brown:      #94513a;
+      --ius-brown-dark: #774638;
+      --ius-navy:       #0a203c;
+      --ius-teal:       #003140;
+      --ius-light:      #eff2ff;
+      --ius-white:      #ffffff;
+    }
+
+    /* ── Base ───────────────────────────────────────────────── */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ius-navy);
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+    }
+
+    /* ── Bootstrap overrides ────────────────────────────────── */
+    .btn-primary {
+      background-color: var(--ius-brown);
+      border-color: var(--ius-brown);
+      border-radius: 6px;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: var(--ius-brown-dark);
+      border-color: var(--ius-brown-dark);
+    }
+    .btn-outline-light:hover {
+      color: var(--ius-navy);
+    }
+    .text-primary { color: var(--ius-brown) !important; }
+    .bg-primary    { background-color: var(--ius-brown) !important; }
+
+    /* ── Navbar ─────────────────────────────────────────────── */
+    .navbar {
+      background-color: var(--ius-navy);
+    }
+    .navbar-brand img {
+      height: 46px;
+    }
+    .navbar-nav .nav-link {
+      color: rgba(255,255,255,.85);
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .4px;
+      padding-inline: 1rem;
+      transition: color .2s;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--ius-brown);
+    }
+
+    /* ── Hero ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Video background */
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+    /* Dark overlay so text stays legible */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(10,32,60,.45) 50%, rgba(0,49,64,.35) 100%);
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(148, 81, 58, .2);
+      color: #e8a890;
+      border: 1px solid rgba(148, 81, 58, .4);
+      border-radius: 50px;
+      padding: .35rem 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      color: var(--ius-white);
+      line-height: 1.15;
+    }
+    .hero h1 span {
+      color: var(--ius-brown);
+    }
+    .hero p.lead {
+      color: rgba(255,255,255,.75);
+      font-size: 1.1rem;
+      max-width: 560px;
+    }
+    .hero-img-col {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-card {
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    /* ── Stats bar ──────────────────────────────────────────── */
+    .stats-bar {
+      background-color: var(--ius-brown);
+    }
+    .stat-item h3 {
+      font-size: 2rem;
+      color: #fff;
+      margin: 0;
+    }
+    .stat-item p {
+      color: rgba(255,255,255,.8);
+      font-size: .85rem;
+      margin: 0;
+    }
+
+    /* ── Section helpers ────────────────────────────────────── */
+    .section-label {
+      display: inline-block;
+      color: var(--ius-brown);
+      font-weight: 700;
+      font-size: .78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--ius-navy);
+      line-height: 1.2;
+    }
+
+    /* ── Services cards ─────────────────────────────────────── */
+    .service-card {
+      border: none;
+      border-radius: 16px;
+      transition: transform .25s, box-shadow .25s;
+      height: 100%;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(10, 32, 60, .12);
+    }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background-color: rgba(148, 81, 58, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--ius-brown);
+      margin-bottom: 1rem;
+    }
+
+    /* ── Why Iusknow ────────────────────────────────────────── */
+    .why-section { background-color: var(--ius-light); }
+    .feature-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .feature-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--ius-brown);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    /* ── CTA banner ─────────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--ius-navy) 0%, var(--ius-teal) 100%);
+    }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      background-color: var(--ius-navy);
+      color: rgba(255,255,255,.65);
+    }
+    footer h6 {
+      color: #fff;
+      font-size: .85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    footer a {
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+    footer a:hover { color: var(--ius-brown); }
+    .footer-divider {
+      border-color: rgba(255,255,255,.1);
+    }
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background-color: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.7);
+      font-size: 1rem;
+      transition: background-color .2s, color .2s;
+      text-decoration: none;
+    }
+    .social-icon:hover {
+      background-color: var(--ius-brown);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+    <div class="container">
+      <!-- Logo text fallback (replace src with real logo) -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <span style="font-family:'Lato',sans-serif; font-weight:900; font-size:1.5rem; color:#fff;">
+          ius<span style="color:var(--ius-brown);">know</span>
+        </span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+              data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false">
+        <i class="bi bi-list text-white fs-2"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Immigration</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Business</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a href="#" class="btn btn-primary px-4">Get Started</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="hero py-5">
+    <!-- Background video -->
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="movie/header.mp4" type="video/mp4">
+    </video>
+    <!-- Dark overlay -->
+    <div class="hero-overlay"></div>
+
+    <div class="container py-5 position-relative" style="z-index:2;">
+      <div class="row align-items-center g-5">
+
+        <!-- Left column -->
+        <div class="col-lg-6">
+          <div class="hero-badge">
+            <i class="bi bi-shield-check me-1"></i> Bilingual U.S. &amp; Mexico Attorneys
+          </div>
+          <h1>Mexican Legal <span>Expertise</span> for a Global Life</h1>
+          <p class="lead mt-3 mb-4">
+            Navigate life and business in Mexico with confidence. From company formation
+            and immigration to tax compliance and everyday essentials—we've got you covered.
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#" class="btn btn-primary btn-lg px-4">
+              <i class="bi bi-download me-2"></i>Download Free Guide
+            </a>
+            <a href="#" class="btn btn-outline-light btn-lg px-4">
+              Explore Services
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column — floating card -->
+        <div class="col-lg-5 offset-lg-1 hero-img-col">
+          <div class="hero-card">
+            <p class="text-white-50 small mb-3 fw-semibold text-uppercase ls-1">What we handle</p>
+            <div class="row g-3">
+              <div class="col-6" *ngFor="let s of services">
+                <!-- Service pills -->
+                <div class="d-flex align-items-center gap-2 bg-white bg-opacity-10 rounded-3 p-2">
+                  <i class="bi bi-building text-warning"></i>
+                  <span class="text-white small">Company Formation</span>
+                </div>
+              </div>
+
+              <!-- Manual pills matching the brand -->
+              <div class="col-6">
+                <div class="d-flex align-items-center gap-2 rounded-3 p-2" style="background:rgba(255,255,255,.08)">
+                  <i class="bi bi-building" style="color:#e8a890;"></i>
+                  <span class="text-white small">Company Formation</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex align-items-center gap-2 rounded-3 p-2" style="background:rgba(255,255,255,.08)">
+                  <i class="bi bi-person-badge" style="color:#e8a890;"></i>
+                  <span class="text-white small">Immigration</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex align-items-center gap-2 rounded-3 p-2" style="background:rgba(255,255,255,.08)">
+                  <i class="bi bi-receipt" style="color:#e8a890;"></i>
+                  <span class="text-white small">Tax Compliance</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex align-items-center gap-2 rounded-3 p-2" style="background:rgba(255,255,255,.08)">
+                  <i class="bi bi-bank" style="color:#e8a890;"></i>
+                  <span class="text-white small">Banking</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex align-items-center gap-2 rounded-3 p-2" style="background:rgba(255,255,255,.08)">
+                  <i class="bi bi-house-door" style="color:#e8a890;"></i>
+                  <span class="text-white small">Leases &amp; Real Estate</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-flex align-items-center gap-2 rounded-3 p-2" style="background:rgba(255,255,255,.08)">
+                  <i class="bi bi-card-text" style="color:#e8a890;"></i>
+                  <span class="text-white small">Driver's Licenses</span>
+                </div>
+              </div>
+            </div>
+
+            <hr style="border-color:rgba(255,255,255,.15); margin:1.2rem 0;">
+            <div class="d-flex align-items-center gap-2">
+              <div class="d-flex">
+                <img src="https://i.pravatar.cc/32?img=1" class="rounded-circle border border-2 border-white" width="32" style="margin-right:-8px;" alt="">
+                <img src="https://i.pravatar.cc/32?img=5" class="rounded-circle border border-2 border-white" width="32" style="margin-right:-8px;" alt="">
+                <img src="https://i.pravatar.cc/32?img=9" class="rounded-circle border border-2 border-white" width="32" alt="">
+              </div>
+              <p class="text-white small mb-0 ms-2">
+                <strong>500+</strong> clients successfully advised
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       STATS BAR
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="stats-bar py-4">
+    <div class="container">
+      <div class="row text-center g-3">
+        <div class="col-6 col-md-3 stat-item">
+          <h3>500+</h3>
+          <p>Clients Served</p>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <h3>2</h3>
+          <p>Countries of Expertise</p>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <h3>100%</h3>
+          <p>Bilingual Team</p>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <h3>15+</h3>
+          <p>Practice Areas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="py-6 py-5" id="services">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">Legal Services Tailored for<br>Life in Mexico</h2>
+        <p class="text-muted mt-2" style="max-width:520px; margin:auto;">
+          Whether you're an expat, investor, or entrepreneur, we simplify every legal challenge you'll face.
+        </p>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="card service-card shadow-sm p-4">
+            <div class="service-icon"><i class="bi bi-building"></i></div>
+            <h5>Company Formation</h5>
+            <p class="text-muted small">Incorporate your business in Mexico quickly, correctly, and with full legal compliance from day one.</p>
+            <a href="#" class="text-primary fw-semibold small">Learn more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="card service-card shadow-sm p-4">
+            <div class="service-icon"><i class="bi bi-person-badge"></i></div>
+            <h5>Immigration</h5>
+            <p class="text-muted small">Visas, temporary residency, permanent residency, and citizenship—handled efficiently by bilingual experts.</p>
+            <a href="#" class="text-primary fw-semibold small">Learn more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="card service-card shadow-sm p-4">
+            <div class="service-icon"><i class="bi bi-receipt-cutoff"></i></div>
+            <h5>Tax Compliance</h5>
+            <p class="text-muted small">SAT registration, RFC, annual declarations, and ongoing tax strategy for individuals and businesses.</p>
+            <a href="#" class="text-primary fw-semibold small">Learn more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="card service-card shadow-sm p-4">
+            <div class="service-icon"><i class="bi bi-bank"></i></div>
+            <h5>Banking Setup</h5>
+            <p class="text-muted small">Open personal and business bank accounts in Mexico without the bureaucratic headaches.</p>
+            <a href="#" class="text-primary fw-semibold small">Learn more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="card service-card shadow-sm p-4">
+            <div class="service-icon"><i class="bi bi-house-door"></i></div>
+            <h5>Leases &amp; Real Estate</h5>
+            <p class="text-muted small">Rental contracts, property purchases, and due diligence—all reviewed by Mexican-law specialists.</p>
+            <a href="#" class="text-primary fw-semibold small">Learn more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="card service-card shadow-sm p-4">
+            <div class="service-icon"><i class="bi bi-card-text"></i></div>
+            <h5>Driver's Licenses</h5>
+            <p class="text-muted small">Get your Mexican driver's license legally transferred or issued—no guesswork, no wasted trips.</p>
+            <a href="#" class="text-primary fw-semibold small">Learn more <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       WHY IUSKNOW
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="why-section py-5" id="why">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+
+        <!-- Left visual -->
+        <div class="col-lg-5">
+          <div class="rounded-4 overflow-hidden shadow-lg position-relative"
+               style="background: linear-gradient(135deg, var(--ius-navy), var(--ius-teal)); padding: 3rem 2rem; min-height: 420px; display:flex; align-items:center; justify-content:center;">
+            <div class="text-center text-white">
+              <i class="bi bi-globe-americas" style="font-size:5rem; color:var(--ius-brown); opacity:.9;"></i>
+              <h3 class="mt-3">U.S. &amp; Mexican<br>Legal Expertise</h3>
+              <p class="text-white-50 small mt-2">
+                The only platform combining both legal systems<br>to serve the globally mobile professional.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right features -->
+        <div class="col-lg-7">
+          <span class="section-label">Why Iusknow?</span>
+          <h2 class="section-title mb-4">The Bridge Between Two<br>Legal Worlds</h2>
+
+          <div class="feature-item">
+            <div class="feature-icon"><i class="bi bi-translate"></i></div>
+            <div>
+              <h6 class="mb-1">Truly Bilingual</h6>
+              <p class="text-muted small mb-0">Our attorneys work fluently in English and Spanish, ensuring nothing is lost in translation—legally or linguistically.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon"><i class="bi bi-patch-check"></i></div>
+            <div>
+              <h6 class="mb-1">Dual Jurisdiction Training</h6>
+              <p class="text-muted small mb-0">Licensed in both the U.S. and Mexico, our team understands cross-border nuances that single-jurisdiction firms miss.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon"><i class="bi bi-lightning-charge"></i></div>
+            <div>
+              <h6 class="mb-1">Platform-Powered Efficiency</h6>
+              <p class="text-muted small mb-0">Our tech-enabled platform means faster turnaround, transparent pricing, and real-time case updates—no surprises.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon"><i class="bi bi-people"></i></div>
+            <div>
+              <h6 class="mb-1">Built for Expats &amp; Entrepreneurs</h6>
+              <p class="text-muted small mb-0">From digital nomads to multinational companies, our services are designed around the realities of a global lifestyle in Mexico.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       CTA BANNER
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="cta-section py-5">
+    <div class="container py-4 text-center">
+      <i class="bi bi-file-earmark-text" style="font-size:3rem; color:var(--ius-brown);"></i>
+      <h2 class="text-white mt-3 mb-2">Ready to Navigate Mexico with Confidence?</h2>
+      <p class="text-white-50 mb-4">
+        Download our free guide and discover everything you need to know about living and doing business in Mexico.
+      </p>
+      <a href="#" class="btn btn-primary btn-lg px-5">
+        <i class="bi bi-download me-2"></i>Download Free Guide
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4 mb-4">
+
+        <!-- Brand col -->
+        <div class="col-lg-4">
+          <span style="font-family:'Lato',sans-serif; font-weight:900; font-size:1.6rem; color:#fff;">
+            ius<span style="color:var(--ius-brown);">know</span>
+          </span>
+          <p class="mt-3 small">
+            Bilingual U.S.- and Mexico-trained legal expertise to help you confidently
+            build your life and business in Mexico.
+          </p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="col-sm-6 col-lg-2">
+          <h6>Services</h6>
+          <ul class="list-unstyled">
+            <li class="mb-1"><a href="#">Company Formation</a></li>
+            <li class="mb-1"><a href="#">Immigration</a></li>
+            <li class="mb-1"><a href="#">Tax Compliance</a></li>
+            <li class="mb-1"><a href="#">Banking</a></li>
+            <li class="mb-1"><a href="#">Leases</a></li>
+            <li class="mb-1"><a href="#">Driver's License</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="col-sm-6 col-lg-2">
+          <h6>Company</h6>
+          <ul class="list-unstyled">
+            <li class="mb-1"><a href="#">About Us</a></li>
+            <li class="mb-1"><a href="#">Our Team</a></li>
+            <li class="mb-1"><a href="#">Blog</a></li>
+            <li class="mb-1"><a href="#">Careers</a></li>
+            <li class="mb-1"><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="col-sm-6 col-lg-2">
+          <h6>Resources</h6>
+          <ul class="list-unstyled">
+            <li class="mb-1"><a href="#">Free Guide</a></li>
+            <li class="mb-1"><a href="#">FAQ</a></li>
+            <li class="mb-1"><a href="#">Mexico Legal 101</a></li>
+            <li class="mb-1"><a href="#">Expat Checklist</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-sm-6 col-lg-2">
+          <h6>Contact</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2">
+              <i class="bi bi-envelope me-1" style="color:var(--ius-brown);"></i>
+              <a href="mailto:info@iusknow.com">info@iusknow.com</a>
+            </li>
+            <li class="mb-2">
+              <i class="bi bi-geo-alt me-1" style="color:var(--ius-brown);"></i>
+              Mexico City &amp; Online
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <hr class="footer-divider">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center py-2 small">
+        <p class="mb-1 mb-md-0">&copy; 2026 Iusknow. All rights reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
